@@ -70,7 +70,7 @@
 </div>
 <article class="cards" id="resultado">
     <h3>Receitas:</h3>
-    <table>
+    <table *ngFor="let r of recipes" >
         <tr>
           <th>Nome</th>
           <th>Categoria</th>
@@ -80,8 +80,8 @@
           <td>Pães e bolos</td>
         </tr>
         <tr>
-          <td>Macarrão alho e óleo</td>
-          <td>Massas</td>
+          <td>{{r.name}}</td>
+          <td>{{r.category.description}}</td>
         </tr>
       </table>
 

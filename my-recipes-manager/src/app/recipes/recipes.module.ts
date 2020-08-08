@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { RecipeService } from './shared';
+import { RecipeService } from './services';
 import { ListRecipeComponent } from './list-recipe/list-recipe.component';
 
 @NgModule({
