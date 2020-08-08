@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Type, PrepareType, DetailsRecipeIngredients, Category, Recipe, Ingredient  } from '../models';
+import { RecipeService } from '../services';
+
 @Component({
   selector: 'app-list-recipe',
   templateUrl: './list-recipe.component.html',
@@ -52,10 +55,19 @@ export class ListRecipeComponent implements OnInit {
           }
       ]
   },
-  ]
-  constructor() { }
+  ];
+
+  types: Array<any>;
+
+  constructor(private recipeService : RecipeService) { }
 
   ngOnInit(): void {
+    this.typeFindAll();
   }
+
+  typeFindAll() {
+    this.recipeService.typeFindAll().subscribe(datas => this.types = datas);
+  }
+
 
 }

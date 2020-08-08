@@ -47,8 +47,11 @@
                 <input type="text" name="obs" id="obs">
             </div>
             <div class="form-group">
-                <select name="s-tipo" id="tipo">
+                <select name="s-tipo" id="tipo" >
                     <option value="">Tipo</option>
+                    <option *ngFor="let t of types" value={{t.code}}>
+                        {{t.type}}
+                    </option>
                 </select>
                 <select name="s-categoria" id="categoria">
                     <option value="">Categoria</option>
