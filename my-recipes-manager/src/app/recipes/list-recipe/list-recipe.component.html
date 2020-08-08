@@ -1,0 +1,88 @@
+<main class="principal container">
+    <article class="sugestao">
+        <a href="#"><img src="assets/img/principal.png" alt="Prato Principal" ></a>
+        <div class="inner">
+            <a href="#">Nome receita</a>
+            <h4>Nome categoria</h4>
+        </div>
+    </article>
+    <article class="sugestao">
+        <a href="#"><img src="assets/img/carne.png" alt="Carne" ></a>
+        <div class="inner">
+            <a href="#">Nome receita</a>
+            <h4>Nome categoria</h4>
+        </div>
+    </article>
+    <article class="sugestao">
+        <a href="#"><img src="assets/img/sobremesa.png" alt="Sobremesa" ></a>
+        <div class="inner">
+            <a href="#">Nome receita</a>
+            <h4>Nome categoria</h4>
+        </div>
+    </article>
+    <article class="sugestao">
+        <a href="#"><img src="assets/img/random.png" alt="Busca aleatória" ></a>
+        <div class="inner">
+            <p id="aleatoria">Busca aleatória</p>
+            <form action="">
+                <select name="categoria" id="">
+                    <option value="0"> Categoria </option>
+                </select> 
+                <input type="button" value="Buscar">
+            </form>     
+        </div>
+    </article>
+</main>
+
+<div class="busca">
+    <article class="cards"   id="buscar">
+        <h3>Buscar:</h3>
+        <form action="post" id="form-busca">
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" name="nome" id="nome">
+                <label for="ingred">Ingrediente</label>
+                <input type="text" name="ingred" id="ingred">
+                <label for="obs">Observações</label>
+                <input type="text" name="obs" id="obs">
+            </div>
+            <div class="form-group">
+                <select name="s-tipo" id="tipo">
+                    <option value="">Tipo</option>
+                </select>
+                <select name="s-categoria" id="categoria">
+                    <option value="">Categoria</option>
+                </select>
+                <select name="s-tipo-prep" id="tipo-preparo">
+                    <option value="">Tipo de preparo</option>
+                </select>
+                <select name="s-tempo-prep" id="tempo-preparo">
+                    <option value="">Tempo de preparo</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="checkbox"><input type="checkbox" id="test">Testada</label>
+                <label class="checkbox"><input type="checkbox" id="test">Favorita</label>
+            </div>
+                <input id="enviar" type="button" value="Buscar">
+        </form>
+    </article>
+</div>
+<article class="cards" id="resultado">
+    <h3>Receitas:</h3>
+    <table>
+        <tr>
+          <th>Nome</th>
+          <th>Categoria</th>
+        </tr>
+        <tr>
+          <td>Pão</td>
+          <td>Pães e bolos</td>
+        </tr>
+        <tr>
+          <td>Macarrão alho e óleo</td>
+          <td>Massas</td>
+        </tr>
+      </table>
+
+</article>
