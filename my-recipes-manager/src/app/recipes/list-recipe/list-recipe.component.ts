@@ -10,64 +10,49 @@ import { RecipeService } from '../services';
 })
 export class ListRecipeComponent implements OnInit {
 
-  recipes = [
-    {
-      "code": 1,
-      "name": "Pãozinho",
-      "tested": true,
-      "methodOfPreparation": "buscar na Padaria",
-      "preparationTime": "10 minutos",
-      "comments": "",
-      "favorite": true,
-      "category": {
-          "code": 3,
-          "description": "Pães, Bolos, Tortas e Lanches diversos"
-      },
-      "type": {
-          "code": 1,
-          "type": "Salgada"
-      },
-      "prepareType": {
-          "code": 6,
-          "prepareType": "Outro"
-      },
-      "detailsRecipeIngredients": [
-          {
-              "quantity": "1",
-              "ingredient": {
-                  "code": 4,
-                  "name": "pimentão verde"
-              }
-          },
-          {
-              "quantity": "2 xic",
-              "ingredient": {
-                  "code": 6,
-                  "name": "queijo ralado"
-              }
-          },
-          {
-              "quantity": "2",
-              "ingredient": {
-                  "code": 1,
-                  "name": "ovos"
-              }
-          }
-      ]
-  },
-  ];
-
-  types: Array<any>;
+  types: Array<Type>;
+  categorySelected: number;
+  categories: Array<Category>;
+  prepareTypes: Array<PrepareType>;
+  preparationTime: Array<String>;
+  recipe: Recipe;
+  recipes:  Array<Recipe> = [];
 
   constructor(private recipeService : RecipeService) { }
 
   ngOnInit(): void {
     this.typeFindAll();
+    this.categoryFindAll();
+    this.prepareTypeFindAll();
+    this.preparationTimeFindAll();
+    this.categorySelected=2;
+    this.recipes;
   }
 
   typeFindAll() {
     this.recipeService.typeFindAll().subscribe(datas => this.types = datas);
   }
 
+  categoryFindAll(){
+      this.recipeService.categoryFindAll().subscribe(datas => this.categories = datas);
+  }
+
+  prepareTypeFindAll(){
+    this.recipeService.typePrepareFindAll().subscribe(datas => this.prepareTypes = datas);
+  }
+
+  preparationTimeFindAll(){
+      this.recipeService.preparationTimeFindAll().subscribe(datas => this.preparationTime = datas);
+  }
+
+  randomSearchRecipe(){
+    var recipesList:  Array<Recipe> = [];
+    this.recipes = recipesList;
+    this.recipeService.randomSearchRecipe(this.categorySelected).subscribe(data => this.recipe = data);
+    const recipe2: Recipe = this.recipe;
+    if(recipe2 !== undefined){
+        this.recipes.push(recipe2);
+    }
+  }
 
 }

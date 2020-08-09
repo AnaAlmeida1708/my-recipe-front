@@ -25,10 +25,14 @@
         <div class="inner">
             <p id="aleatoria">Busca aleatória</p>
             <form action="">
-                <select name="categoria" id="">
-                    <option value="0"> Categoria </option>
+                <select name="categoria" id="b-aleatoria" [(ngModel)]="categorySelected" > 
+                    <option *ngFor="let c of categories" [value]="c.code" >
+                        {{c.description}}
+                    </option>
                 </select> 
-                <input type="button" value="Buscar">
+                <div>
+                    <input id="busca-aleatoria" type="submit" value="Buscar" (click)="randomSearchRecipe()">
+                </div>
             </form>     
         </div>
     </article>
@@ -55,36 +59,43 @@
                 </select>
                 <select name="s-categoria" id="categoria">
                     <option value="">Categoria</option>
+                    <option *ngFor="let c of categories" value={{c.code}}>
+                        {{c.description}}
+                    </option>
                 </select>
                 <select name="s-tipo-prep" id="tipo-preparo">
                     <option value="">Tipo de preparo</option>
+                    <option *ngFor="let tp of prepareTypes" value={{tp.code}}>
+                        {{tp.prepareType}}
+                    </option>
                 </select>
                 <select name="s-tempo-prep" id="tempo-preparo">
                     <option value="">Tempo de preparo</option>
+                    <option *ngFor="let tmp of preparationTime" value={{tmp}} >
+                        {{tmp}}
+                    </option>
                 </select>
             </div>
             <div class="form-group">
                 <label class="checkbox"><input type="checkbox" id="test">Testada</label>
                 <label class="checkbox"><input type="checkbox" id="test">Favorita</label>
             </div>
-                <input id="enviar" type="button" value="Buscar">
+                <input id="enviar" type="submit" value="Buscar">
         </form>
     </article>
 </div>
 <article class="cards" id="resultado">
     <h3>Receitas:</h3>
-    <table *ngFor="let r of recipes" >
+    <table>
         <tr>
           <th>Nome</th>
           <th>Categoria</th>
+          <th>Tempo de Preparo</th>
         </tr>
-        <tr>
-          <td>Pão</td>
-          <td>Pães e bolos</td>
-        </tr>
-        <tr>
+        <tr *ngFor="let r of recipes"> 
           <td>{{r.name}}</td>
           <td>{{r.category.description}}</td>
+          <td>{{r.preparationTime}}</td>
         </tr>
       </table>
 

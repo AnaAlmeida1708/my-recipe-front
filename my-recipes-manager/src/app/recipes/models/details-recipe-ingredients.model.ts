@@ -3,6 +3,6 @@ export class DetailsRecipeIngredients {
 
     constructor(
         public quantity ?: number,
-        public ingredient ?: Ingredient
+        public ingredient ?: Ingredient []
     ) {}
 }

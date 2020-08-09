@@ -82,6 +82,10 @@ padding-left: 1%;
 line-height: 1.5em; 
 }
 
+.form-group label {
+    font-weight: 400;
+    }
+
 #nome{
     width: 30%;
 }
@@ -99,6 +103,13 @@ line-height: 1.5em;
     width: 23%;
     }
 
+#b-aleatoria{
+    border-radius: 5px;
+    margin: 0.4%;
+    padding: 2px;
+    width: 20%;
+}
+
 #resultado {
     background-color:greenyellow;
     width: 90%;
@@ -110,7 +121,7 @@ table {
   }
   
   td, th {
-    border: 1px solid #dddddd;
+    border: 1px solid #130400;
     text-align: left;
     padding: 8px;
   }
@@ -132,4 +143,18 @@ table {
   
 #enviar:hover {
 	background-color: darkorange;
+}
+#busca-aleatoria {
+	width: 10%;
+	padding: 15px 0;
+	font-size: 18px;
+	background-color: orange;
+	color: white;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+    cursor: pointer;
+    margin-top: 2%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.295);
+    float: right;
 }
