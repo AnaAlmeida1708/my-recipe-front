@@ -2,38 +2,29 @@
     <article class="sugestao">
         <a href="#"><img src="assets/img/principal.png" alt="Prato Principal" ></a>
         <div class="inner">
-            <a href="#">Nome receita</a>
-            <h4>Nome categoria</h4>
+            <a href="#"> {{mainRecipe.name}}</a>
+            <h4>{{mainRecipe.category.description}}</h4>
         </div>
     </article>
     <article class="sugestao">
         <a href="#"><img src="assets/img/carne.png" alt="Carne" ></a>
         <div class="inner">
-            <a href="#">Nome receita</a>
-            <h4>Nome categoria</h4>
+            <a href="#">{{meatRecipe.name}}</a>
+            <h4>{{meatRecipe.category.description}}</h4>
         </div>
     </article>
     <article class="sugestao">
         <a href="#"><img src="assets/img/sobremesa.png" alt="Sobremesa" ></a>
         <div class="inner">
-            <a href="#">Nome receita</a>
-            <h4>Nome categoria</h4>
+            <a href="#">{{dessertRecipe.name}}</a>
+            <h4>{{dessertRecipe.category.description}}</h4>
         </div>
     </article>
     <article class="sugestao">
         <a href="#"><img src="assets/img/random.png" alt="Busca aleatória" ></a>
         <div class="inner">
-            <p id="aleatoria">Busca aleatória</p>
-            <form action="">
-                <select name="categoria" id="b-aleatoria" [(ngModel)]="categorySelected" > 
-                    <option *ngFor="let c of categories" [value]="c.code" >
-                        {{c.description}}
-                    </option>
-                </select> 
-                <div>
-                    <input id="busca-aleatoria" type="submit" value="Buscar" (click)="randomSearchRecipe()">
-                </div>
-            </form>     
+            <a href="#">{{saladRecipe.name}}</a>
+            <h4>{{saladRecipe.category.description}}</h4>
         </div>
     </article>
 </main>
@@ -52,19 +43,19 @@
             </div>
             <div class="form-group">
                 <select name="s-tipo" id="tipo" >
-                    <option value="">Tipo</option>
+                    <option value="0">Tipo</option>
                     <option *ngFor="let t of types" value={{t.code}}>
                         {{t.type}}
                     </option>
                 </select>
                 <select name="s-categoria" id="categoria">
-                    <option value="">Categoria</option>
+                    <option value="0">Categoria</option>
                     <option *ngFor="let c of categories" value={{c.code}}>
                         {{c.description}}
                     </option>
                 </select>
                 <select name="s-tipo-prep" id="tipo-preparo">
-                    <option value="">Tipo de preparo</option>
+                    <option value="0">Tipo de preparo</option>
                     <option *ngFor="let tp of prepareTypes" value={{tp.code}}>
                         {{tp.prepareType}}
                     </option>
@@ -82,6 +73,18 @@
             </div>
                 <input id="enviar" type="submit" value="Buscar">
         </form>
+
+            <p id="aleatoria">Busca aleatória</p>
+            <form action="">
+                <select name="categoria" id="b-aleatoria" [(ngModel)]="categorySelected" > 
+                    <option *ngFor="let c of categories" [value]="c.code" >
+                        {{c.description}}
+                    </option>
+                </select> 
+                <div>
+                    <input id="busca-aleatoria" type="submit" value="Buscar" (click)="randomSearchRecipe()">
+                </div>
+            </form>     
     </article>
 </div>
 <article class="cards" id="resultado">

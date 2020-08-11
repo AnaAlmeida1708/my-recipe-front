@@ -17,6 +17,10 @@ export class ListRecipeComponent implements OnInit {
   preparationTime: Array<String>;
   recipe: Recipe;
   recipes:  Array<Recipe> = [];
+  mainRecipe: Recipe;
+  meatRecipe: Recipe;
+  saladRecipe: Recipe;
+  dessertRecipe: Recipe;
 
   constructor(private recipeService : RecipeService) { }
 
@@ -27,11 +31,17 @@ export class ListRecipeComponent implements OnInit {
     this.preparationTimeFindAll();
     this.categorySelected=2;
     this.recipes;
+    this.mainSuggestion();
+    this.dessertSuggestion();
+    this.saladSuggestion();
+    this.meatSuggestion();
   }
 
+  
   typeFindAll() {
     this.recipeService.typeFindAll().subscribe(datas => this.types = datas);
   }
+  
 
   categoryFindAll(){
       this.recipeService.categoryFindAll().subscribe(datas => this.categories = datas);
@@ -55,4 +65,22 @@ export class ListRecipeComponent implements OnInit {
     }
   }
 
+  
+  mainSuggestion(){
+    this.recipeService.mainSuggestion().subscribe(data => this.mainRecipe = data);
+  }
+
+  
+  meatSuggestion(){
+    this.recipeService.meatSuggestion().subscribe(data => this.meatRecipe = data);
+  }
+
+  saladSuggestion(){
+    this.recipeService.saladSuggestion().subscribe(data => this.saladRecipe = data);
+  }
+
+  dessertSuggestion(){
+    this.recipeService.dessertSuggestion().subscribe(data => this.dessertRecipe= data);
+  }
+  
 }
