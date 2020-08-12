@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
-import { Type, PrepareType, DetailsRecipeIngredients, Category, Recipe, Ingredient  } from '../models';
+import { Type, PrepareType, DetailsRecipeIngredients, Category, Recipe, Ingredient, Filter  } from '../models';
 import { RecipeService } from '../services';
 
 @Component({
@@ -9,6 +10,8 @@ import { RecipeService } from '../services';
   styleUrls: ['./list-recipe.component.css']
 })
 export class ListRecipeComponent implements OnInit {
+
+  @ViewChild('formFindRecipe', { static: true }) formFindRecipe: NgForm;
 
   types: Array<Type>;
   categorySelected: number;
@@ -21,6 +24,7 @@ export class ListRecipeComponent implements OnInit {
   meatRecipe: Recipe;
   saladRecipe: Recipe;
   dessertRecipe: Recipe;
+  filter: Filter;
 
   constructor(private recipeService : RecipeService) { }
 
@@ -29,19 +33,23 @@ export class ListRecipeComponent implements OnInit {
     this.categoryFindAll();
     this.prepareTypeFindAll();
     this.preparationTimeFindAll();
-    this.categorySelected=2;
+    this.categorySelected=3;
     this.recipes;
     this.mainSuggestion();
     this.dessertSuggestion();
     this.saladSuggestion();
     this.meatSuggestion();
+    this.filter = new Filter();
+    this.filter.prepareTypeCode=0;
+    this.filter.typeCode=0;
+    this.filter.categoryCode=0;
+    this.filter.preparationTime="";
   }
 
   
   typeFindAll() {
     this.recipeService.typeFindAll().subscribe(datas => this.types = datas);
   }
-  
 
   categoryFindAll(){
       this.recipeService.categoryFindAll().subscribe(datas => this.categories = datas);
@@ -65,12 +73,10 @@ export class ListRecipeComponent implements OnInit {
     }
   }
 
-  
   mainSuggestion(){
     this.recipeService.mainSuggestion().subscribe(data => this.mainRecipe = data);
   }
 
-  
   meatSuggestion(){
     this.recipeService.meatSuggestion().subscribe(data => this.meatRecipe = data);
   }
@@ -81,6 +87,18 @@ export class ListRecipeComponent implements OnInit {
 
   dessertSuggestion(){
     this.recipeService.dessertSuggestion().subscribe(data => this.dessertRecipe= data);
+  }
+
+  findRecipesByFilter(){
+    var recipeList:  Array<Recipe> = [];
+    this.recipes = recipeList;
+    
+    this.recipeService.findRecipesByFilter(this.filter).subscribe(datas => this.recipes = datas);
+    const listRecipe: Recipe []= this.recipes;
+    if(listRecipe !== undefined){
+      this.recipes = listRecipe;
+    }
+    
   }
   
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
-import { Type, PrepareType, DetailsRecipeIngredients, Category, Recipe, Ingredient  } from '../models';
+import { Type, PrepareType, DetailsRecipeIngredients, Category, Recipe, Ingredient, Filter  } from '../models';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Injectable()
@@ -56,39 +56,30 @@ export class RecipeService {
     dessertSuggestion(){
       return this.http.get<Recipe>(`${this.RANDOM_SEARCH_URL}2`)
     }
-    
-     /*
-    findRecipesByFilter(name: string, ingredient: string, comments: string,
-      typeCode: number, categoryCode: number, prepareTypeCode: number, preparationTime: string,
-      tested: boolean, favorite: boolean ){
-        if(typeCode==0){
-          typeCode=null
+
+    findRecipesByFilter(filter:Filter){
+
+        if(filter.tested==undefined){
+          filter.tested=false
+        }else{
+          filter.tested=true
         }
-        if(categoryCode==0){
-          categoryCode=null
+        if(filter.favorite==undefined){
+          filter.favorite=false
+        }else{
+          filter.tested=true
         }
-        if(prepareTypeCode==0){
-          prepareTypeCode=null
+        if(filter.name == undefined){
+          filter.name = ""
         }
-        if(tested==false){
-          tested=null
+        if(filter.comments == undefined){
+          filter.comments = ""
         }
-        if(favorite==false){
-          favorite=null
+        if(filter.ingredient == undefined){
+          filter.ingredient = ""
         }
         
-        return this.http.get<String[]>(`${this.FILTER_URL}
-        &preparationTime=${preparationTime}
-        &name=${name}
-        &comments=${comments}
-        &ingredient=${ingredient}
-        &typeCode=${typeCode}
-        &categoryCode=${categoryCode}
-        &prepareTypeCode=${prepareTypeCode}
-        &tested=${tested}
-        &favorite=${favorite}
-        `);
+        return this.http.get<Recipe[]>(`${this.FILTER_URL}&typeCode=${filter.typeCode}&categoryCode=${filter.categoryCode}&prepareTypeCode=${filter.prepareTypeCode}&preparationTime=${filter.preparationTime}&name=${filter.name}&tested=${filter.tested}&favorite=${filter.favorite}&comments=${filter.comments}&ingredient=${filter.ingredient}`);
     }
 
-    */
 }

@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { RecipeService } from './services';
-import { ListRecipeComponent } from './list-recipe/list-recipe.component';
+import { ListRecipeComponent } from './home-recipe';
 
 @NgModule({
   declarations: [ListRecipeComponent],

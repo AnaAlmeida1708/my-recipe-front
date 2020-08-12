@@ -32,35 +32,35 @@
 <div class="busca">
     <article class="cards"   id="buscar">
         <h3>Buscar:</h3>
-        <form action="post" id="form-busca">
+        <form #formFindRecipe="ngForm">
             <div class="form-group">
                 <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome">
+                <input type="text" name="name" id="name" [(ngModel)]="filter.name">
                 <label for="ingred">Ingrediente</label>
-                <input type="text" name="ingred" id="ingred">
+                <input type="text" name="ingredient" id="ingredient" [(ngModel)]="filter.ingredient">
                 <label for="obs">Observações</label>
-                <input type="text" name="obs" id="obs">
+                <input type="text" name="comments" id="comments" [(ngModel)]="filter.comments">
             </div>
             <div class="form-group">
-                <select name="s-tipo" id="tipo" >
+                <select name="s-tipo" id="typeCode" [(ngModel)]="filter.typeCode">
                     <option value="0">Tipo</option>
                     <option *ngFor="let t of types" value={{t.code}}>
                         {{t.type}}
                     </option>
                 </select>
-                <select name="s-categoria" id="categoria">
+                <select name="s-categoria" id="categoryCode" [(ngModel)]="filter.categoryCode">
                     <option value="0">Categoria</option>
                     <option *ngFor="let c of categories" value={{c.code}}>
                         {{c.description}}
                     </option>
                 </select>
-                <select name="s-tipo-prep" id="tipo-preparo">
+                <select name="s-tipo-prep" id="prepareTypeCode" [(ngModel)]="filter.prepareTypeCode">
                     <option value="0">Tipo de preparo</option>
                     <option *ngFor="let tp of prepareTypes" value={{tp.code}}>
                         {{tp.prepareType}}
                     </option>
                 </select>
-                <select name="s-tempo-prep" id="tempo-preparo">
+                <select name="s-tempo-prep" id="preparationTime" [(ngModel)]="filter.preparationTime">
                     <option value="">Tempo de preparo</option>
                     <option *ngFor="let tmp of preparationTime" value={{tmp}} >
                         {{tmp}}
@@ -68,10 +68,19 @@
                 </select>
             </div>
             <div class="form-group">
-                <label class="checkbox"><input type="checkbox" id="test">Testada</label>
-                <label class="checkbox"><input type="checkbox" id="test">Favorita</label>
+                <label class="checkbox">
+                    <input type="checkbox" 
+                    id="tested" 
+                    [(ngModel)]="filter.tested"  
+                    ng-true-value="true" 
+                    ng-false-value="false">
+                    Testada
+                </label>
+                <label class="checkbox"><input type="checkbox" id="favorite">Favorita</label>
             </div>
-                <input id="enviar" type="submit" value="Buscar">
+            <div>
+                <input id="enviar" type="submit" value="Buscar" (click)="findRecipesByFilter()">
+            </div>
         </form>
 
             <p id="aleatoria">Busca aleatória</p>
@@ -103,3 +112,5 @@
       </table>
 
 </article>
+
+
