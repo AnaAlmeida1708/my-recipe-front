@@ -44,6 +44,8 @@ export class ListRecipeComponent implements OnInit {
     this.filter.typeCode=0;
     this.filter.categoryCode=0;
     this.filter.preparationTime="";
+    this.filter.tested=false;
+    this.filter.favorite=false;
   }
 
   
@@ -92,7 +94,7 @@ export class ListRecipeComponent implements OnInit {
   findRecipesByFilter(){
     var recipeList:  Array<Recipe> = [];
     this.recipes = recipeList;
-    
+    //alert('Form: ' + JSON.stringify(this.filter) + this.filter.tested);
     this.recipeService.findRecipesByFilter(this.filter).subscribe(datas => this.recipes = datas);
     const listRecipe: Recipe []= this.recipes;
     if(listRecipe !== undefined){

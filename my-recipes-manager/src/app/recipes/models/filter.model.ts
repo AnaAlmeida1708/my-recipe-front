@@ -8,7 +8,7 @@ export class Filter {
         public categoryCode?: number, 
         public prepareTypeCode?: number, 
         public preparationTime?: string,
-        public tested?: any, 
-        public favorite?: any
+        public tested?: boolean, 
+        public favorite?: boolean
     ) {}
 }

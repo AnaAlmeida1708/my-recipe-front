@@ -58,17 +58,6 @@ export class RecipeService {
     }
 
     findRecipesByFilter(filter:Filter){
-
-        if(filter.tested==undefined){
-          filter.tested=false
-        }else{
-          filter.tested=true
-        }
-        if(filter.favorite==undefined){
-          filter.favorite=false
-        }else{
-          filter.tested=true
-        }
         if(filter.name == undefined){
           filter.name = ""
         }
