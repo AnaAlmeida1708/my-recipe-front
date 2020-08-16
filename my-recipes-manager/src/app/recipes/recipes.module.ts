@@ -6,9 +6,14 @@ import { FormsModule } from '@angular/forms';
 import { RecipeService } from './services';
 import { ListRecipeComponent } from './home-recipe';
 import { ShowRecipeComponent } from './show-recipe/show-recipe.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 @NgModule({
-  declarations: [ListRecipeComponent, ShowRecipeComponent],
+  declarations: [
+    ListRecipeComponent, 
+    ShowRecipeComponent, 
+    FavoritesComponent
+  ],
   imports: [
     CommonModule,
     HttpClientModule,

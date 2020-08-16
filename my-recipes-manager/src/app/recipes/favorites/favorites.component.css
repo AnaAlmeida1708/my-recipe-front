@@ -1,0 +1,15 @@
+#resultado {
+    background-color:greenyellow;
+    width: 90%;
+    }
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #130400;
+    text-align: left;
+    padding: 8px;
+  }

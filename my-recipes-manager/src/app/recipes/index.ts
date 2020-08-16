@@ -4,3 +4,4 @@ export * from './models';
 export * from './home-recipe';
 export * from './recipes-routing.module';
 export * from './show-recipe';
+export * from './favorites';

@@ -15,6 +15,7 @@ export class RecipeService {
   private readonly RANDOM_SEARCH_URL = 'http://localhost:8084/receitas/aleatoria/?categoryCode='
   private readonly FILTER_URL = 'http://localhost:8084/receitas/filtros?'
   private readonly RECIPE_URL = 'http://localhost:8084/receitas/';
+  private readonly RECIPES_FAVORITE_URL = 'http://localhost:8084/receitas/favoritas';
 
   constructor(private http: HttpClient) { }
 
@@ -80,4 +81,7 @@ export class RecipeService {
       return recipe;
     }
     
+    findRecipesFavorite(){
+      return this.http.get<Recipe[]>(`${this.RECIPES_FAVORITE_URL}`);
+    }
 }

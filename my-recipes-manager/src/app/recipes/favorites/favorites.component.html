@@ -1,0 +1,30 @@
+<article class="cards" id="resultado">
+    <h3>Receitas:</h3>
+    <table>
+        <tr>
+          <th>Nome</th>
+          <th>Categoria</th>
+          <th>Tempo de Preparo</th>
+          <th>Detalhes</th>
+        </tr>
+        <tr *ngFor="let r of favoriteRecipes"> 
+          <td>{{r.name}}</td>
+          <td>{{r.category.description}}</td>
+          <td>{{r.preparationTime}}</td>
+          <td>
+            <input 
+			type="submit" 
+			value="Detalhes"
+			class="btn btn-success"
+			data-toggle="modal"
+            data-target="#modalRecipe"
+            (click)="addRecipe(r)"
+            >
+          </td>
+        </tr>
+      </table>
+</article>
+<modal-recipe
+[receiveRecipe] = "recipe"
+>
+</modal-recipe>
