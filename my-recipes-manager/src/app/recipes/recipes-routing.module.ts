@@ -1,3 +1,4 @@
+import { ShowRecipeComponent } from './show-recipe/show-recipe.component';
 import { Routes } from '@angular/router';
 
 import { ListRecipeComponent } from './home-recipe';

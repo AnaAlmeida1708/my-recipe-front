@@ -12,6 +12,6 @@ export class Recipe {
         public category ?: Category,
         public type ?: Type,
         public prepareType ?: PrepareType,
-        public detailsRecipeIngredients ?: DetailsRecipeIngredients
+        public detailsRecipeIngredients ?: DetailsRecipeIngredients[]
     ) {}
 }

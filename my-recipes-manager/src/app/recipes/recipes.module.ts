@@ -5,9 +5,10 @@ import { FormsModule } from '@angular/forms';
 
 import { RecipeService } from './services';
 import { ListRecipeComponent } from './home-recipe';
+import { ShowRecipeComponent } from './show-recipe/show-recipe.component';
 
 @NgModule({
-  declarations: [ListRecipeComponent],
+  declarations: [ListRecipeComponent, ShowRecipeComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -15,6 +16,9 @@ import { ListRecipeComponent } from './home-recipe';
   ],
   providers:[
     RecipeService
+  ],
+  entryComponents:[
+    ShowRecipeComponent
   ]
 })
 export class RecipesModule { }

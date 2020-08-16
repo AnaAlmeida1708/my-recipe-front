@@ -14,6 +14,7 @@ export class RecipeService {
   private readonly PREPARATION_TIME_URL = 'http://localhost:8084/receitas/tempo-preparo';
   private readonly RANDOM_SEARCH_URL = 'http://localhost:8084/receitas/aleatoria/?categoryCode='
   private readonly FILTER_URL = 'http://localhost:8084/receitas/filtros?'
+  private readonly RECIPE_URL = 'http://localhost:8084/receitas/';
 
   constructor(private http: HttpClient) { }
 
@@ -71,4 +72,12 @@ export class RecipeService {
         return this.http.get<Recipe[]>(`${this.FILTER_URL}&typeCode=${filter.typeCode}&categoryCode=${filter.categoryCode}&prepareTypeCode=${filter.prepareTypeCode}&preparationTime=${filter.preparationTime}&name=${filter.name}&tested=${filter.tested}&favorite=${filter.favorite}&comments=${filter.comments}&ingredient=${filter.ingredient}`);
     }
 
+    findRecipeByCode(code: number){
+      return this.http.get<Recipe>(`${this.RECIPE_URL}${code}`)
+    }
+    
+    addRecipe(recipe:Recipe){
+      return recipe;
+    }
+    
 }

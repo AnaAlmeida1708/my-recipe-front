@@ -25,6 +25,8 @@ export class ListRecipeComponent implements OnInit {
   saladRecipe: Recipe;
   dessertRecipe: Recipe;
   filter: Filter;
+  codeRecipe: number;
+  receiveRecipe: Recipe = new Recipe();
 
   constructor(private recipeService : RecipeService) { }
 
@@ -94,13 +96,15 @@ export class ListRecipeComponent implements OnInit {
   findRecipesByFilter(){
     var recipeList:  Array<Recipe> = [];
     this.recipes = recipeList;
-    //alert('Form: ' + JSON.stringify(this.filter) + this.filter.tested);
     this.recipeService.findRecipesByFilter(this.filter).subscribe(datas => this.recipes = datas);
     const listRecipe: Recipe []= this.recipes;
     if(listRecipe !== undefined){
       this.recipes = listRecipe;
     }
-    
+  }
+
+  addRecipe(recipe: Recipe){
+    this.receiveRecipe = recipe;
   }
   
 }
