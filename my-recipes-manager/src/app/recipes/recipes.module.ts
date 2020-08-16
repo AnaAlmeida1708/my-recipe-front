@@ -7,12 +7,13 @@ import { RecipeService } from './services';
 import { ListRecipeComponent } from './home-recipe';
 import { ShowRecipeComponent } from './show-recipe/show-recipe.component';
 import { FavoritesComponent } from './favorites/favorites.component';
+import { InsertComponent } from './insert/insert.component';
 
 @NgModule({
   declarations: [
     ListRecipeComponent, 
     ShowRecipeComponent, 
-    FavoritesComponent
+    FavoritesComponent, InsertComponent
   ],
   imports: [
     CommonModule,
