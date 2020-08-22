@@ -1,0 +1,42 @@
+<article class="cards" id="resultado">
+    <h3>Receitas:</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Categoria</th>
+          <th scope="col">Detalhes</th>
+          <th scope="col">Editar</th>
+          <th scope="col">Excluir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of listRecipes"> 
+          <td>{{r.name}}</td>
+          <td>{{r.category.description}}</td>
+          <td>
+            <input type="submit" 
+            value="Detalhes" class="btn btn-success"
+            data-toggle="modal" data-target="#modalRecipe"
+            (click)="addRecipe(r)">
+          </td>
+          <td>
+            <input type="submit" 
+            value="Editar" class="btn btn-primary"
+            data-toggle="modal" data-target="#modalRecipe"
+            (click)="addRecipe(r)">
+          </td>
+          <td>
+            <input type="submit" 
+            value="Excluir" class="btn btn-danger"
+            data-toggle="modal" data-target="#modalRecipe"
+            (click)="addRecipe(r)">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</article>
+<modal-recipe
+[receiveRecipe] = "recipe"
+>
+</modal-recipe>

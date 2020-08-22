@@ -82,7 +82,7 @@ export class RecipeService {
       return this.http.post(this.RECIPE_URL, recipe);
     }
 
-    //findAllRecipes(){
-     // return this.http.get<Recipe[]>(`${this.RECIPE_URL}`);
-    //}
+    findAllRecipes(){
+      return this.http.get<Recipe[]>(`${this.RECIPE_URL}`);
+    }
 }

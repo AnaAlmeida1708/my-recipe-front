@@ -7,3 +7,4 @@ export * from './show-recipe';
 export * from './favorites';
 export * from './insert';
 export * from './insert-ingredient';
+export * from './manager-recipes';
