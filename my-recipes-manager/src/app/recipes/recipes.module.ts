@@ -3,17 +3,18 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
-import { RecipeService } from './services';
+import { RecipeService, IngredientService } from './services';
 import { ListRecipeComponent } from './home-recipe';
 import { ShowRecipeComponent } from './show-recipe/show-recipe.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { InsertComponent } from './insert/insert.component';
+import { InsertIngredientComponent } from './insert-ingredient/insert-ingredient.component';
 
 @NgModule({
   declarations: [
     ListRecipeComponent, 
     ShowRecipeComponent, 
-    FavoritesComponent, InsertComponent
+    FavoritesComponent, InsertComponent, InsertIngredientComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +22,8 @@ import { InsertComponent } from './insert/insert.component';
     FormsModule
   ],
   providers:[
-    RecipeService
+    RecipeService,
+    IngredientService
   ],
   entryComponents:[
     ShowRecipeComponent

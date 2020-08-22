@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { ListRecipeComponent } from './home-recipe';
 import { FavoritesComponent } from './favorites';
 import { InsertComponent } from './insert';
+import { InsertIngredientComponent } from './insert-ingredient';
 
 export const RecipeRoutes: Routes = [
     {
@@ -18,7 +19,7 @@ export const RecipeRoutes: Routes = [
         component: FavoritesComponent
     },
     {
-        path: 'receitas/cadastro',
+        path: 'receitas/cadastrar',
         component: InsertComponent
     },
 

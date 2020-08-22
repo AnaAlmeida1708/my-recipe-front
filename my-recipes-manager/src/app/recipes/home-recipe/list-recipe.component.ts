@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { Type, PrepareType, DetailsRecipeIngredients, Category, Recipe, Ingredient, Filter  } from '../models';
+import { Type, PrepareType, Category, Recipe, Filter  } from '../models';
 import { RecipeService } from '../services';
 
 @Component({

@@ -1,7 +1,5 @@
 import { Component, OnInit,
-  //EventEmitter,
   Input,
-  //Output
 } from '@angular/core';
 
 import { Type, PrepareType, DetailsRecipeIngredients, Category, Recipe, Ingredient, Filter  } from '../models';

@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
-import { Type, PrepareType, DetailsRecipeIngredients, Category, Recipe, Ingredient, Filter  } from '../models';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Type, PrepareType, Category, Recipe, Filter  } from '../models';
 
 @Injectable()
 export class RecipeService {
@@ -40,13 +39,11 @@ export class RecipeService {
       const recipe: any = this.http.get<Recipe>(`${this.RANDOM_SEARCH_URL}${categoryCode}`)
       return recipe;
     }
-
     
     mainSuggestion(){
       return this.http.get<Recipe>(`${this.RANDOM_SEARCH_URL}6`);
     }
      
-   
     meatSuggestion(){
       return this.http.get<Recipe>(`${this.RANDOM_SEARCH_URL}5`)
     }
@@ -77,11 +74,15 @@ export class RecipeService {
       return this.http.get<Recipe>(`${this.RECIPE_URL}${code}`)
     }
     
-    addRecipe(recipe:Recipe){
-      return recipe;
-    }
-    
     findRecipesFavorite(){
       return this.http.get<Recipe[]>(`${this.RECIPES_FAVORITE_URL}`);
     }
+
+    insertRecipe(recipe: any){
+      return this.http.post(this.RECIPE_URL, recipe);
+    }
+
+    //findAllRecipes(){
+     // return this.http.get<Recipe[]>(`${this.RECIPE_URL}`);
+    //}
 }

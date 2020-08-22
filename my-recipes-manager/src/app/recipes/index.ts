@@ -6,3 +6,4 @@ export * from './recipes-routing.module';
 export * from './show-recipe';
 export * from './favorites';
 export * from './insert';
+export * from './insert-ingredient';
