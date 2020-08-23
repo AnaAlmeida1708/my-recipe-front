@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Type, PrepareType, DetailsRecipeIngredients, Category, Recipe, Ingredient, Filter  } from '../models';
+import { Recipe } from '../models';
 import { RecipeService } from '../services';
 
 
 @Component({
-  selector: 'app-manager-recipes',
+  selector: 'app-manager-recipes', 
   templateUrl: './manager-recipes.component.html',
   styleUrls: ['./manager-recipes.component.css']
 })

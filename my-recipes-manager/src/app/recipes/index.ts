@@ -9,3 +9,4 @@ export * from './insert-recipe';
 export * from './insert-ingredient';
 export * from './manager-recipes';
 export * from './edit-recipe';
+export * from './manager-ingredients';

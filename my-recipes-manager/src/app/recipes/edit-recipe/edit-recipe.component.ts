@@ -19,9 +19,9 @@ export class EditRecipeComponent implements OnInit {
   prepareTypes: Array<PrepareType>;
   ingredients: Array<Ingredient>;
   recipe: Recipe;
-  detailsRecipeActually: Array<DetailsRecipeIngredients> = [];
   detailsRecipe: Array<DetailsRecipeIngredients> = [];
   detailsRecipeScreen: Array<DetailsRecipeIngredientsSelect> = [];
+  details: Array<DetailsRecipeIngredients>;
   select: boolean;
   recipeResponse: Recipe;
 
@@ -35,9 +35,10 @@ export class EditRecipeComponent implements OnInit {
     this.typeFindAll();
     this.categoryFindAll();
     this.prepareTypeFindAll();
-    this.findAllIngredients();
     const code = +this.route.snapshot.params['code'];
     this.findRecipeByCode(code);
+    this.findDetailsRecipeByRecipeCode(code);
+    //this.selectedIngredients();
   }
 
   typeFindAll() {
@@ -51,7 +52,7 @@ export class EditRecipeComponent implements OnInit {
   prepareTypeFindAll(){
     this.recipeService.typePrepareFindAll().subscribe(datas => this.prepareTypes = datas);
   }
-
+/*
   findAllIngredients(){
     this.ingredientService.findAll().subscribe(datas => {
       this.ingredients = datas;
@@ -65,8 +66,35 @@ export class EditRecipeComponent implements OnInit {
       }
     });
   }
+*/
+  selectedIngredients(){
+   for(let d in this.details){
+     let de = this.details[d]
+     let ingredient: Ingredient = new Ingredient();
+     ingredient.code = de.ingredient.code
+     ingredient.name = de.ingredient.name
+     let detailRecipe: DetailsRecipeIngredients = new DetailsRecipeIngredients();
+     detailRecipe.ingredient = ingredient
+     detailRecipe.quantity = de.quantity
+     let detailS: DetailsRecipeIngredientsSelect = new DetailsRecipeIngredientsSelect(); 
+       detailS.details = detailRecipe;
+       detailS.select = true;
+       this.detailsRecipeScreen.push(detailS);
+   }
+   alert('Form: ' + JSON.stringify(this.details));
+  }
+
+  get detailsRecipe2(): DetailsRecipeIngredients [] {
+    if(this.recipe.detailsRecipeIngredients == undefined){
+      var detailsList: Array<DetailsRecipeIngredients> = [];
+      return detailsList;
+    }else{
+      return this.recipe.detailsRecipeIngredients;
+    }
+  }
 
   updateRecipe(){
+    //this.selectedIngredients()
     this.recipeService.updateRecipe(this.recipe.code, this.recipe).subscribe(data => this.recipe = data);
     this.router.navigate(["receitas/gerenciar"])
   }
@@ -89,5 +117,9 @@ export class EditRecipeComponent implements OnInit {
   findRecipeByCode(code: number){
     this.recipeService.findRecipeByCode(code).subscribe(data => this.recipe = data);
   }
-
+  
+  findDetailsRecipeByRecipeCode(code: number){
+    this.recipeService.findDetailsRecipeByRecipeCode(code).subscribe(datas => this.details = datas);
+  }
+  
 }

@@ -1,3 +1,4 @@
+import { DetailsRecipeIngredients } from './../models/details-recipe-ingredients.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
@@ -66,7 +67,6 @@ export class RecipeService {
         if(filter.ingredient == undefined){
           filter.ingredient = ""
         }
-        
         return this.http.get<Recipe[]>(`${this.FILTER_URL}&typeCode=${filter.typeCode}&categoryCode=${filter.categoryCode}&prepareTypeCode=${filter.prepareTypeCode}&preparationTime=${filter.preparationTime}&name=${filter.name}&tested=${filter.tested}&favorite=${filter.favorite}&comments=${filter.comments}&ingredient=${filter.ingredient}`);
     }
 
@@ -101,7 +101,10 @@ export class RecipeService {
       recipeDto.codeType = codeType;
       recipeDto.codeCategory = codeCategory;
       recipeDto.codePrepareType = codePrepareType;
-      //alert('Form: ' + JSON.stringify(recipeDto));
       return this.http.put(`${this.RECIPE_URL}${codeRecipe}`, recipeDto);
+    }
+
+    findDetailsRecipeByRecipeCode(code:number){
+      return this.http.get<DetailsRecipeIngredients[]>(`http://localhost:8084/detalhes-ingredientes-receita/${code}`);
     }
 }
