@@ -1,16 +1,16 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Type, PrepareType, DetailsRecipeIngredients, Category, Recipe, Ingredient, DetailsRecipeIngredientsSelect } from '../models';
 import { RecipeService, IngredientService } from '../services';
 
 @Component({
-  selector: 'app-insert',
-  templateUrl: './insert.component.html',
-  styleUrls: ['./insert.component.css']
+  selector: 'app-edit-recipe',
+  templateUrl: './edit-recipe.component.html',
+  styleUrls: ['./edit-recipe.component.css']
 })
-export class InsertComponent implements OnInit {
+export class EditRecipeComponent implements OnInit {
 
   @ViewChild('recipeForm', { static: true }) recipeForm: NgForm;
 
@@ -19,9 +19,7 @@ export class InsertComponent implements OnInit {
   prepareTypes: Array<PrepareType>;
   ingredients: Array<Ingredient>;
   recipe: Recipe;
-  type: Type;
-  category: Category;
-  prepareType: PrepareType;
+  detailsRecipeActually: Array<DetailsRecipeIngredients> = [];
   detailsRecipe: Array<DetailsRecipeIngredients> = [];
   detailsRecipeScreen: Array<DetailsRecipeIngredientsSelect> = [];
   select: boolean;
@@ -30,25 +28,16 @@ export class InsertComponent implements OnInit {
   constructor(
     private recipeService : RecipeService, 
     private ingredientService: IngredientService,
-    private router: Router) { }
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.typeFindAll();
     this.categoryFindAll();
     this.prepareTypeFindAll();
     this.findAllIngredients();
-    this.recipe = new Recipe();
-    this.type = new Type();
-    this.type.code = 1;
-    this.category = new Category();
-    this.category.code = 1;
-    this.prepareType = new PrepareType();
-    this.prepareType.code = 1;
-    this.recipe.tested = false;
-    this.recipe.favorite = false;
-    this.recipe.type = this.type;
-    this.recipe.category = this.category;
-    this.recipe.prepareType = this.prepareType;
+    const code = +this.route.snapshot.params['code'];
+    this.findRecipeByCode(code);
   }
 
   typeFindAll() {
@@ -77,14 +66,11 @@ export class InsertComponent implements OnInit {
     });
   }
 
-  insert(recipeForm: NgForm){
-    this.addDetail();
-    //alert('Form: ' + JSON.stringify(this.recipeForm.value));
-    //alert('Form: ' + JSON.stringify(this.recipe));
-    this.recipeService.insertRecipe(this.recipe).subscribe(data => this.recipeResponse = data);
-    //this.router.navigate(["/home"])
+  updateRecipe(){
+    this.recipeService.updateRecipe(this.recipe.code, this.recipe).subscribe(data => this.recipe = data);
+    this.router.navigate(["receitas/gerenciar"])
   }
-
+  /*
   addDetail(){
     for(let d in this.detailsRecipeScreen){
       let drs = this.detailsRecipeScreen[d];
@@ -99,4 +85,9 @@ export class InsertComponent implements OnInit {
     }
     this.recipe.detailsRecipeIngredients = this.detailsRecipe;
   }
+*/
+  findRecipeByCode(code: number){
+    this.recipeService.findRecipeByCode(code).subscribe(data => this.recipe = data);
+  }
+
 }

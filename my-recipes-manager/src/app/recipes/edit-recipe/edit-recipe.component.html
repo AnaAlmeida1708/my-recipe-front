@@ -1,0 +1,86 @@
+<form #recipeForm="ngForm" novalidate>
+    <div class="form-group">
+        <label for="name">Nome</label>
+        <input type="text" class="form-control" id="name" name="name" [(ngModel)]="recipe.name" required>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="codeType">Tipo</label>
+                <select id="codeType" class="form-control" name="codeType" [(ngModel)]="recipe.type.code">
+                    <option *ngFor="let t of types" value={{t.code}}>
+                        {{t.type}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="codeCategory">Categoria</label>
+                <select id="codeCategory" class="form-control" name="codeCategory" [(ngModel)]="recipe.category.code">
+                    <option *ngFor="let c of categories" value={{c.code}}>
+                        {{c.description}}
+                    </option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="prepareTypeCode">Tipo de preparo</label>
+                <select id="prepareTypeCode" class="form-control" name="prepareTypeCode" [(ngModel)]="recipe.prepareType.code">
+                    <option *ngFor="let tp of prepareTypes" value={{tp.code}}>
+                        {{tp.prepareType}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="preparationTime">Tempo de preparo</label>
+                <input type="text" class="form-control" id="preparationTime" name="preparationTime"
+                    [(ngModel)]="recipe.preparationTime" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="comments">Observações</label>
+                <input type="text" class="form-control" id="comments" name="comments" [(ngModel)]="recipe.comments">
+            </div>
+            <div class="form-group col-md-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="tested" [(ngModel)]="recipe.tested">
+                    <label class="form-check-label" for="tested">
+                        Testada
+                    </label>
+                </div>
+            </div>
+            <div class="form-group col-md-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="favorite" [(ngModel)]="recipe.favorite">
+                    <label class="form-check-label" for="favorite">
+                        Favorita
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="methodOfPreparation">Modo de Preparo</label>
+            <textarea class="form-control" id="methodOfPreparation" rows="5" name="methodOfPreparation"
+                [(ngModel)]="recipe.methodOfPreparation" required></textarea>
+        </div>
+        <div class="form-check form-check-inline col-md-2" *ngFor='let i of detailsRecipeScreen' >
+            <input class="form-check-input" type="checkbox" id="codeIngredient" name="codeIngredient"
+                [(ngModel)]="i.select">
+            <label class="form-check-label" for="codeIngredient">{{i.details.ingredient.name}}</label>
+            <div *ngIf="i.select">
+                <label for="quantity">Quantidade</label>
+                <input type="text" class="form-control" id="quantity" name="quantity" [(ngModel)]="i.details.quantity">
+            </div>
+
+        </div>
+
+
+        <div class="form-group col-md-12">
+            <input type="submit" value="Novo" class="btn btn-primary" data-toggle="modal"
+                data-target="#modalIngredient">
+        </div>
+
+    </div>
+    <div class="form-group col-md-12">
+        <button type="submit" class="btn btn-success" (click)="updateRecipe()">Atualizar</button>
+    </div>
+</form>
+<modal-ingredient [ingredients]='ingredients'>
+</modal-ingredient>

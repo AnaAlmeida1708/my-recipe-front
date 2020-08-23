@@ -71,7 +71,7 @@ export class RecipeService {
     }
 
     findRecipeByCode(code: number){
-      return this.http.get<Recipe>(`${this.RECIPE_URL}${code}`)
+      return this.http.get<Recipe>(`${this.RECIPE_URL}${code}`);
     }
     
     findRecipesFavorite(){
@@ -84,5 +84,24 @@ export class RecipeService {
 
     findAllRecipes(){
       return this.http.get<Recipe[]>(`${this.RECIPE_URL}`);
+    }
+
+    updateRecipe(codeRecipe:number, recipe: Recipe){
+      let recipeDto: any = {};
+      recipeDto.name = recipe.name;
+      recipeDto.code = recipe.code;
+      recipeDto.comments = recipe.comments;
+      recipeDto.favorite = recipe.favorite;
+      recipeDto.tested = recipe.tested;
+      recipeDto.preparationTime = recipe.preparationTime;
+      recipeDto.methodOfPreparation = recipe.methodOfPreparation;
+      let codeType: number = recipe.type.code;
+      let codeCategory: number = recipe.category.code;
+      let codePrepareType: number = recipe.prepareType.code;
+      recipeDto.codeType = codeType;
+      recipeDto.codeCategory = codeCategory;
+      recipeDto.codePrepareType = codePrepareType;
+      //alert('Form: ' + JSON.stringify(recipeDto));
+      return this.http.put(`${this.RECIPE_URL}${codeRecipe}`, recipeDto);
     }
 }
