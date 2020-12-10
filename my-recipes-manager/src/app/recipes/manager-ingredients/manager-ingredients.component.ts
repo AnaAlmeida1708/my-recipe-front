@@ -19,9 +19,9 @@ export class ManagerIngredientsComponent implements OnInit {
     this.findAllIngredients();
   }
 
-  //addIngredient(ingredient: Ingredient){
-    //this.ingredient = ingredient
-  //}
+  addIngredient(ingredient: Ingredient){
+    this.ingredient = ingredient
+  }
 
   findAllIngredients(){
     this.ingredientService.findAll().subscribe(datas => this.listIngredients = datas);

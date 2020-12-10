@@ -22,7 +22,7 @@ import { ManagerIngredientsComponent } from './manager-ingredients/manager-ingre
     InsertComponent, 
     InsertIngredientComponent, 
     ManagerRecipesComponent, 
-    EditRecipeComponent, ManagerIngredientsComponent
+    EditRecipeComponent, ManagerIngredientsComponent, 
   ],
   imports: [
     CommonModule,

@@ -8,14 +8,14 @@ import { Type, PrepareType, Category, Recipe, Filter  } from '../models';
 @Injectable()
 export class RecipeService {
 
-  private readonly TYPES_URL = 'http://localhost:8084/tipos';
-  private readonly CATEGORIES_URL = 'http://localhost:8084/categorias';
-  private readonly PREPARE_TYPES_URL = 'http://localhost:8084/tipos-preparo';
-  private readonly PREPARATION_TIME_URL = 'http://localhost:8084/receitas/tempo-preparo';
-  private readonly RANDOM_SEARCH_URL = 'http://localhost:8084/receitas/aleatoria/?categoryCode='
-  private readonly FILTER_URL = 'http://localhost:8084/receitas/filtros?'
-  private readonly RECIPE_URL = 'http://localhost:8084/receitas/';
-  private readonly RECIPES_FAVORITE_URL = 'http://localhost:8084/receitas/favoritas';
+  private readonly TYPES_URL = 'http://localhost:8080/tipos';
+  private readonly CATEGORIES_URL = 'http://localhost:8080/categorias';
+  private readonly PREPARE_TYPES_URL = 'http://localhost:8080/tipos-preparo';
+  private readonly PREPARATION_TIME_URL = 'http://localhost:8080/receitas/tempo-preparo';
+  private readonly RANDOM_SEARCH_URL = 'http://localhost:8080/receitas/aleatoria/?categoryCode='
+  private readonly FILTER_URL = 'http://localhost:8080/receitas/filtros?'
+  private readonly RECIPE_URL = 'http://localhost:8080/receitas/';
+  private readonly RECIPES_FAVORITE_URL = 'http://localhost:8080/receitas/favoritas';
 
   constructor(private http: HttpClient) { }
 
@@ -105,6 +105,6 @@ export class RecipeService {
     }
 
     findDetailsRecipeByRecipeCode(code:number){
-      return this.http.get<DetailsRecipeIngredients[]>(`http://localhost:8084/detalhes-ingredientes-receita/${code}`);
+      return this.http.get<DetailsRecipeIngredients[]>(`http://localhost:8080/detalhes-ingredientes-receita/${code}`);
     }
 }

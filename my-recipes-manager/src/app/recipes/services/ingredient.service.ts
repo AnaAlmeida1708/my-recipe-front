@@ -7,7 +7,7 @@ import { Type, PrepareType, DetailsRecipeIngredients, Category, Recipe, Ingredie
 @Injectable()
 export class IngredientService {
 
-  private readonly INGREDIENTS_URL = 'http://localhost:8084/ingredientes';
+  private readonly INGREDIENTS_URL = 'http://localhost:8080/ingredientes';
 
   constructor(private http: HttpClient) { }
 
