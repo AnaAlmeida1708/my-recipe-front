@@ -6,7 +6,6 @@ import { InsertComponent } from './insert-recipe';
 import { InsertIngredientComponent } from './insert-ingredient';
 import { ManagerRecipesComponent }  from './manager-recipes';
 import { EditRecipeComponent } from './edit-recipe';
-import { ManagerIngredientsComponent } from './manager-ingredients';
 
 export const RecipeRoutes: Routes = [
     {
@@ -33,8 +32,5 @@ export const RecipeRoutes: Routes = [
         path: 'receitas/editar/:code',
         component: EditRecipeComponent
     },
-    {
-        path: 'ingredientes/gerenciar',
-        component: ManagerIngredientsComponent
-    },
+
 ];

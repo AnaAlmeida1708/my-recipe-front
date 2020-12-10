@@ -12,7 +12,6 @@ import { InsertComponent } from './insert-recipe/insert.component';
 import { InsertIngredientComponent } from './insert-ingredient/insert-ingredient.component';
 import { ManagerRecipesComponent } from './manager-recipes/manager-recipes.component';
 import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
-import { ManagerIngredientsComponent } from './manager-ingredients/manager-ingredients.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +21,7 @@ import { ManagerIngredientsComponent } from './manager-ingredients/manager-ingre
     InsertComponent, 
     InsertIngredientComponent, 
     ManagerRecipesComponent, 
-    EditRecipeComponent, ManagerIngredientsComponent, 
+    EditRecipeComponent, 
   ],
   imports: [
     CommonModule,
