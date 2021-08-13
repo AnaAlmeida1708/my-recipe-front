@@ -58,33 +58,18 @@
             </div>
         </div>
         <div class="form-group">
+            <label for="ingredients">Ingredientes</label>
+            <textarea class="form-control" id="ingredients" rows="5" name="ingredients"
+                [(ngModel)]="recipe.ingredients" required></textarea>
+        </div>
+        <div class="form-group">
             <label for="methodOfPreparation">Modo de Preparo</label>
             <textarea class="form-control" id="methodOfPreparation" rows="5" name="methodOfPreparation"
                 [(ngModel)]="recipe.methodOfPreparation" required></textarea>
         </div>
-        <table>
-            <tr *ngFor='let d of detailsRecipe2'> 
-              <td>{{d.quantity}}</td>
-              <td>{{d.ingredient.name}}</td>
-            </tr>
-        </table>
-        <div class="form-check form-check-inline col-md-2" *ngFor='let i of detailsRecipeScreen' >
-            <input class="form-check-input" type="checkbox" id="codeIngredient" name="codeIngredient"
-                [(ngModel)]="i.select">
-            <label class="form-check-label" for="codeIngredient">{{i.details.ingredient.name}}</label>
-            <div *ngIf="i.select">
-                <label for="quantity">Quantidade</label>
-                <input type="text" class="form-control" id="quantity" name="quantity" [(ngModel)]="i.details.quantity">
-            </div>
-        </div>
         <div class="form-group col-md-12">
-            <input type="submit" value="Novo" class="btn btn-primary" data-toggle="modal"
-                data-target="#modalIngredient">
+            <button type="submit" class="btn btn-success" (click)="updateRecipe()">Atualizar</button>
         </div>
-    </div>
-    <div class="form-group col-md-12">
-        <button type="submit" class="btn btn-success" (click)="updateRecipe()">Atualizar</button>
+
     </div>
 </form>
-<modal-ingredient [ingredients]='ingredients'>
-</modal-ingredient>

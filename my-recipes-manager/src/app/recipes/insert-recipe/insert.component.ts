@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { Type, PrepareType, DetailsRecipeIngredients, Category, Recipe, Ingredient, DetailsRecipeIngredientsSelect } from '../models';
-import { RecipeService, IngredientService } from '../services';
+import { Type, PrepareType,  Category, Recipe,   } from '../models';
+import { RecipeService } from '../services';
 
 @Component({
   selector: 'app-insert',
@@ -17,26 +17,21 @@ export class InsertComponent implements OnInit {
   types: Array<Type>;
   categories: Array<Category>;
   prepareTypes: Array<PrepareType>;
-  ingredients: Array<Ingredient>;
   recipe: Recipe;
   type: Type;
   category: Category;
   prepareType: PrepareType;
-  detailsRecipe: Array<DetailsRecipeIngredients> = [];
-  detailsRecipeScreen: Array<DetailsRecipeIngredientsSelect> = [];
   select: boolean;
   recipeResponse: Recipe;
 
   constructor(
     private recipeService : RecipeService, 
-    private ingredientService: IngredientService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.typeFindAll();
     this.categoryFindAll();
     this.prepareTypeFindAll();
-    this.findAllIngredients();
     this.recipe = new Recipe();
     this.type = new Type();
     this.type.code = 1;
@@ -63,38 +58,9 @@ export class InsertComponent implements OnInit {
     this.recipeService.typePrepareFindAll().subscribe(datas => this.prepareTypes = datas);
   }
 
-  findAllIngredients(){
-    this.ingredientService.findAll().subscribe(datas => {
-      this.ingredients = datas;
-      for(let i in this.ingredients){
-        let detailRecipe: DetailsRecipeIngredients = new DetailsRecipeIngredients();
-        detailRecipe.ingredient = this.ingredients[i];
-        let details: DetailsRecipeIngredientsSelect = new DetailsRecipeIngredientsSelect();
-        details.details = detailRecipe;
-        details.select = false;
-        this.detailsRecipeScreen.push(details);
-      }
-    });
-  }
-
   insert(recipeForm: NgForm){
-    this.addDetail();
     this.recipeService.insertRecipe(this.recipe).subscribe(data => this.recipeResponse = data);
-    this.router.navigate(["/gerenciar"])
+    this.router.navigate(["/receitas/gerenciar"])
   }
 
-  addDetail(){
-    for(let d in this.detailsRecipeScreen){
-      let drs = this.detailsRecipeScreen[d];
-      if( drs.select == true){
-        let detailRecipe: DetailsRecipeIngredients = new DetailsRecipeIngredients();
-        let ingredient: Ingredient = new Ingredient();
-        ingredient.code = drs.details.ingredient.code;
-        detailRecipe.ingredient = ingredient;
-        detailRecipe.quantity = drs.details.quantity;
-        this.detailsRecipe.push(detailRecipe);
-      }
-    }
-    this.recipe.detailsRecipeIngredients = this.detailsRecipe;
-  }
 }

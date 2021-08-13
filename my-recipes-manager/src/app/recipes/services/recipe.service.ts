@@ -1,4 +1,3 @@
-import { DetailsRecipeIngredients } from './../models/details-recipe-ingredients.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
@@ -93,6 +92,7 @@ export class RecipeService {
       recipeDto.comments = recipe.comments;
       recipeDto.favorite = recipe.favorite;
       recipeDto.tested = recipe.tested;
+      recipeDto.ingredients = recipe.ingredients;
       recipeDto.preparationTime = recipe.preparationTime;
       recipeDto.methodOfPreparation = recipe.methodOfPreparation;
       let codeType: number = recipe.type.code;
@@ -104,7 +104,4 @@ export class RecipeService {
       return this.http.put(`${this.RECIPE_URL}${codeRecipe}`, recipeDto);
     }
 
-    findDetailsRecipeByRecipeCode(code:number){
-      return this.http.get<DetailsRecipeIngredients[]>(`http://localhost:8080/detalhes-ingredientes-receita/${code}`);
-    }
 }

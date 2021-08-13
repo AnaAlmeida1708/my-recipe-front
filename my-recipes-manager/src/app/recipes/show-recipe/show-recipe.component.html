@@ -16,12 +16,7 @@ id="modalRecipe" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" 
         </div>
         <div class="ingredients">
           <h4>Ingredientes:</h4>
-          <table>
-              <tr *ngFor='let d of detailsRecipe'> 
-                <td>{{d.quantity}}</td>
-                <td>{{d.ingredient.name}}</td>
-              </tr>
-          </table>
+          <p>{{receiveRecipe.ingredients}}</p>
         </div>
         <div class="method-preparation">
           <h4>Modo de preparo:</h4>

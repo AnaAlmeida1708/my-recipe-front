@@ -2,7 +2,7 @@ import { Component, OnInit,
   Input,
 } from '@angular/core';
 
-import { Type, PrepareType, DetailsRecipeIngredients, Category, Recipe, Ingredient, Filter  } from '../models';
+import { Type, PrepareType, Category, Recipe, Filter  } from '../models';
 
 @Component({
   selector: 'modal-recipe',
@@ -31,15 +31,6 @@ export class ShowRecipeComponent implements OnInit {
       return 'Sim'
     } else {
       return 'Não'
-    }
-  }
-  
-  get detailsRecipe(): DetailsRecipeIngredients [] {
-    if(this.receiveRecipe.detailsRecipeIngredients == undefined){
-      var detailsList: Array<DetailsRecipeIngredients> = [];
-      return detailsList;
-    }else{
-      return this.receiveRecipe.detailsRecipeIngredients;
     }
   }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Type, PrepareType, DetailsRecipeIngredients, Category, Recipe, Ingredient, Filter  } from '../models';
+import { Type, PrepareType,  Category, Recipe, Filter  } from '../models';
 import { RecipeService } from '../services';
 
 @Component({

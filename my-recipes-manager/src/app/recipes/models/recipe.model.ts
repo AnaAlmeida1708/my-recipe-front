@@ -1,4 +1,4 @@
-import { Type, PrepareType, DetailsRecipeIngredients, Category  } from './index';
+import { Type, PrepareType, Category  } from './index';
 export class Recipe {
 
     constructor(
@@ -7,11 +7,11 @@ export class Recipe {
         public tested ?: boolean,
         public methodOfPreparation ?: string,
         public preparationTime ?: string,
+        public ingredients ?: string,
         public comments ?: string,
         public favorite ?: boolean,
         public category ?: Category,
         public type ?: Type,
         public prepareType ?: PrepareType,
-        public detailsRecipeIngredients ?: DetailsRecipeIngredients[]
     ) {}
 }
