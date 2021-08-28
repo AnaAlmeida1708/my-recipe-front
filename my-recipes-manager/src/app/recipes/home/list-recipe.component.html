@@ -1,0 +1,148 @@
+<div id="cont">
+
+    <main class="principal container">
+        <article class="sugestao">
+            <a href="#" data-toggle="modal" data-target="#modalRecipe" (click)="addRecipe(mainRecipe)"
+            ><img src="assets/img/principal.png" alt="Prato Principal" ></a>
+            <div class="inner">
+                <a href="#" data-toggle="modal" data-target="#modalRecipe" (click)="addRecipe(mainRecipe)"
+                > {{mainRecipe.name}}</a>
+                <h4>{{mainRecipe.category.description}}</h4>
+            </div>
+        </article>
+        <article class="sugestao">
+            <a href="#" data-toggle="modal" data-target="#modalRecipe" (click)="addRecipe(meatRecipe)"
+            ><img src="assets/img/carne.png" alt="Carne" ></a>
+            <div class="inner">
+                <a href="#"data-toggle="modal" data-target="#modalRecipe" (click)="addRecipe(meatRecipe)"
+                >{{meatRecipe.name}}</a>
+                <h4>{{meatRecipe.category.description}}</h4>
+            </div>
+        </article>
+        <article class="sugestao">
+            <a href="#" data-toggle="modal" data-target="#modalRecipe" (click)="addRecipe(dessertRecipe)"
+            ><img src="assets/img/sobremesa.png" alt="Sobremesa" ></a>
+            <div class="inner">
+                <a href="#" data-toggle="modal" data-target="#modalRecipe" (click)="addRecipe(dessertRecipe)"
+                >{{dessertRecipe.name}}</a>
+                <h4>{{dessertRecipe.category.description}}</h4>
+            </div>
+        </article>
+        <article class="sugestao">
+            <a href="#" data-toggle="modal" data-target="#modalRecipe" (click)="addRecipe(saladRecipe)"
+            ><img src="assets/img/random.png" alt="Busca aleatória" ></a>
+            <div class="inner">
+                <a href="#" data-toggle="modal" data-target="#modalRecipe" (click)="addRecipe(saladRecipe)"
+                >{{saladRecipe.name}}</a>
+                <h4>{{saladRecipe.category.description}}</h4>
+            </div>
+        </article>
+    </main>
+
+    <div class="busca">
+        <article class="cards"   id="buscar">
+            <h3>Buscar:</h3>
+            <form #formFindRecipe="ngForm">
+                <div class="form-group">
+                    <div class="f-input"> 
+                        <label for="name">Nome</label>
+                        <input type="text" name="name" id="name" [(ngModel)]="filter.name">
+                    </div>
+                    <div class="f-input"> 
+                        <label for="ingredient">Ingrediente</label>
+                        <input type="text" name="ingredient" id="ingredient" [(ngModel)]="filter.ingredient">
+                    </div>
+                    <div class="f-input">
+                        <label for="comments">Observações</label>
+                        <input type="text" name="comments" id="comments" [(ngModel)]="filter.comments">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <select name="s-tipo" id="typeCode" [(ngModel)]="filter.typeCode">
+                        <option value="0">Tipo</option>
+                        <option *ngFor="let t of types" value={{t.code}}>
+                            {{t.type}}
+                        </option>
+                    </select>
+                    <select name="s-categoria" id="categoryCode" [(ngModel)]="filter.categoryCode">
+                        <option value="0">Categoria</option>
+                        <option *ngFor="let c of categories" value={{c.code}}>
+                            {{c.description}}
+                        </option>
+                    </select>
+                    <select name="s-tipo-prep" id="prepareTypeCode" [(ngModel)]="filter.prepareTypeCode">
+                        <option value="0">Tipo de preparo</option>
+                        <option *ngFor="let tp of prepareTypes" value={{tp.code}}>
+                            {{tp.prepareType}}
+                        </option>
+                    </select>
+                    <select name="s-tempo-prep" id="preparationTime" [(ngModel)]="filter.preparationTime">
+                        <option value="">Tempo de preparo</option>
+                        <option *ngFor="let tmp of preparationTime" value={{tmp}} >
+                            {{tmp}}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group ck">
+                    <label class="checkbox" for="tested"> Testada </label>
+                    <input class="ck-input" type="checkbox"  name="tested" id="tested" [(ngModel)]="filter.tested">
+                    <label class="checkbox" for="favorite">Favorita</label>
+                    <input class="ck-input" type="checkbox" name="favorite" [(ngModel)]="filter.favorite">
+                </div>
+                <div>
+                    <input id="enviar" type="submit" value="Buscar" (click)="findRecipesByFilter()">
+                </div>
+            </form>   
+        </article>
+        <article id="b-aleatoria">
+            <h3 id="aleatoria">Busca aleatória:</h3>
+            <form action="">
+                <select name="categoria" id="bs-aleatoria" [(ngModel)]="categorySelected" > 
+                    <option *ngFor="let c of categories" [value]="c.code" >
+                        {{c.description}}
+                    </option>
+                </select> 
+                <img src="assets/img/random.png" alt="Busca aleatória" >
+                <div>
+                    <input id="busca-aleatoria" type="submit" value="Buscar" (click)="randomSearchRecipe()">
+                </div>
+            </form>  
+        </article>
+    </div>
+    <article class="cards" id="resultado">
+        <h3>Receitas:</h3>
+        <table>
+            <tr>
+            <th style="width: 25%;">Nome</th>
+            <th style="width: 30%;">Categoria</th>
+            <th style="width: 15%;">Tempo de Preparo</th>
+            <th style="width: 15%;">Detalhes</th>
+            </tr>
+            <tr *ngFor="let r of recipes"> 
+            <td>{{r.name}}</td>
+            <td>{{r.category.description}}</td>
+            <td>{{r.preparationTime}}</td>
+            <td>
+                <input 
+                type="submit" 
+                value="Detalhes"
+                class="btn btn-success"
+                data-toggle="modal"
+                data-target="#modalRecipe"
+                (click)="addRecipe(r)"
+                >
+            </td>
+            </tr>
+        </table>
+
+    </article>
+</div>
+<modal-recipe
+[receiveRecipe] = "receiveRecipe"
+>
+</modal-recipe>
+  
+  
+
+
+

@@ -15,7 +15,6 @@ export class RecipeService {
   private readonly FILTER_URL = 'http://localhost:8080/receitas/filtros?'
   private readonly RECIPE_URL = 'http://localhost:8080/receitas/';
   private readonly RECIPES_FAVORITE_URL = 'http://localhost:8080/receitas/favoritas';
-
   constructor(private http: HttpClient) { }
 
     
@@ -71,6 +70,10 @@ export class RecipeService {
 
     findRecipeByCode(code: number){
       return this.http.get<Recipe>(`${this.RECIPE_URL}${code}`);
+    }
+
+    deleteRecipe(code: number){
+      return this.http.delete(`${this.RECIPE_URL}${code}`);
     }
     
     findRecipesFavorite(){

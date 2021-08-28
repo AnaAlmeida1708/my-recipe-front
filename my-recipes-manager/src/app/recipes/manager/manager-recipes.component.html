@@ -23,8 +23,8 @@
                     [routerLink]="['/receitas/editar', r.code]">
                 </td>
                 <td>
-                    <input type="submit" value="Excluir" class="btn btn-danger" data-toggle="modal"
-                        data-target="#modalRecipe" (click)="addRecipe(r)">
+                    <input type="submit" value="Excluir" class="btn btn-danger"
+                    (click)="delete(r)">
                 </td>
             </tr>
         </tbody>

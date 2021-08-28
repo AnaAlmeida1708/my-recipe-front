@@ -5,12 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { RecipeService } from './services';
-import { ListRecipeComponent } from './home-recipe';
-import { ShowRecipeComponent } from './show-recipe/show-recipe.component';
+import { ListRecipeComponent } from './home';
+import { ShowRecipeComponent } from './show/show-recipe.component';
 import { FavoritesComponent } from './favorites/favorites.component';
-import { InsertComponent } from './insert-recipe/insert.component';
-import { ManagerRecipesComponent } from './manager-recipes/manager-recipes.component';
-import { EditRecipeComponent } from './edit-recipe/edit-recipe.component';
+import { InsertComponent } from './insert/insert.component';
+import { ManagerRecipesComponent } from './manager/manager-recipes.component';
+import { EditRecipeComponent } from './edit/edit-recipe.component';
 
 @NgModule({
   declarations: [

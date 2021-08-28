@@ -28,4 +28,11 @@ export class ManagerRecipesComponent implements OnInit {
     this.recipeService.findAllRecipes().subscribe(datas => this.listRecipes = datas);
   }
 
+  delete(recipe: Recipe) {
+    if(confirm('Deseja remover a receita "' + recipe.name+ '"?')){
+      this.recipeService.deleteRecipe(recipe.code);
+      this.findAllRecipes();
+    }
+  }
+
 }
