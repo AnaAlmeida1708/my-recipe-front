@@ -1,34 +1,30 @@
-<article class="cards" id="resultado">
-    <h3>Receitas favoritas:</h3>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Nome</th>
-          <th scope="col">Categoria</th>
-          <th scope="col">Tempo de Preparo</th>
-          <th scope="col">Detalhes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let r of favoriteRecipes"> 
-          <td>{{r.name}}</td>
-          <td>{{r.category.description}}</td>
-          <td>{{r.preparationTime}}</td>
-          <td>
-            <input 
-      type="submit" 
-      value="Detalhes"
-      class="btn btn-success"
-      data-toggle="modal"
-            data-target="#modalRecipe"
-            (click)="addRecipe(r)"
-            >
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</article>
-<modal-recipe
-[receiveRecipe] = "recipe"
->
-</modal-recipe>
+<div id="container">
+  <article class="article" id="resultado">
+      <h3>Receitas favoritas</h3>
+      <div id="table">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Nome</th>
+              <th style="width: 30%;">Categoria</th>
+              <th style="width: 15%;">Tempo de Preparo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let r of favoriteRecipes" data-toggle="modal" data-target="#modalRecipe" (click)="addRecipe(r)">  
+              <td>{{r.name}}</td>
+              <td>{{r.category.description}}</td>
+              <td>{{r.preparationTime}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+  </article>
+  <modal-recipe
+  [receiveRecipe] = "recipe"
+  >
+  </modal-recipe>
+
+</div>
+

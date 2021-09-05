@@ -192,6 +192,9 @@ table {
     font-weight: 700;
     text-align: -internal-center;
 }
+tbody tr:hover{
+    color:blue;
+}
 
   #enviar {
 	width: 25%;

@@ -41,7 +41,7 @@
 
     <div class="busca">
         <article class="cards"   id="buscar">
-            <h3>Buscar:</h3>
+            <h3>Buscar</h3>
             <form #formFindRecipe="ngForm">
                 <div class="form-group">
                     <div class="f-input"> 
@@ -95,7 +95,7 @@
             </form>   
         </article>
         <article id="b-aleatoria">
-            <h3 id="aleatoria">Busca aleatória:</h3>
+            <h3 id="aleatoria">Busca aleatória</h3>
             <form action="">
                 <select name="categoria" id="bs-aleatoria" [(ngModel)]="categorySelected" > 
                     <option *ngFor="let c of categories" [value]="c.code" >
@@ -109,29 +109,18 @@
             </form>  
         </article>
     </div>
-    <article class="cards" id="resultado">
-        <h3>Receitas:</h3>
+    <article class="cards" id="resultado" *ngIf="recipes.length > 0">
+        <h3>Receitas</h3>
         <table>
             <tr>
             <th style="width: 25%;">Nome</th>
             <th style="width: 30%;">Categoria</th>
             <th style="width: 15%;">Tempo de Preparo</th>
-            <th style="width: 15%;">Detalhes</th>
             </tr>
-            <tr *ngFor="let r of recipes"> 
+            <tr *ngFor="let r of recipes" data-toggle="modal" data-target="#modalRecipe" (click)="addRecipe(r)"> 
             <td>{{r.name}}</td>
             <td>{{r.category.description}}</td>
             <td>{{r.preparationTime}}</td>
-            <td>
-                <input 
-                type="submit" 
-                value="Detalhes"
-                class="btn btn-success"
-                data-toggle="modal"
-                data-target="#modalRecipe"
-                (click)="addRecipe(r)"
-                >
-            </td>
             </tr>
         </table>
 
