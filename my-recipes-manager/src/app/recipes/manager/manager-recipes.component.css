@@ -1,6 +1,6 @@
 #container{
     width: 80%;
-    background-color: turquoise;
+    background-color: rgb(242, 102, 143);
     margin-left: auto;
     margin-right: auto;
     padding: 1%;
@@ -36,6 +36,7 @@ table {
     border: 1px solid #dee2e6;
     text-align: left;
     padding: 8px;
+    font-weight: 450;
   }
 
   tr:nth-child(even) {
@@ -52,4 +53,7 @@ input{
     float: right;
     display: flex;
     margin-right: 2%;
+}
+tbody tr:hover{
+    color:rgb(252,56,156);
 }

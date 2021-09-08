@@ -1,6 +1,6 @@
 #conteiner-insert{
     width: 80%;
-    background-color: turquoise;
+    background-color: rgb(242, 102, 143);
     margin-left: auto;
     margin-right: auto;
     padding: 1%;
@@ -58,7 +58,7 @@
     width: 25%;
 	padding: 15px 0;
 	font-size: 18px;
-	background-color: orange;
+	background-color: #f7d24e;
 	color: white;
 	font-weight: bold;
 	border: none;
@@ -72,4 +72,14 @@
 .form-group{
     margin-bottom: 6%;
     padding: 3%;
+}
+label{
+    font-size: 16px;
+    font-weight: 520;
+}
+.form-check label{
+    margin-right: 10px;
+}
+#btn-insert:hover {
+	background-color: darkorange;
 }

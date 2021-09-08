@@ -1,10 +1,15 @@
+#paper{
+    width: 100%;
+    background-color: rgb(242, 102, 143);
+}
+
 #cont{
     width: 80%;
-    background-color: grey;
+    background-color: rgb(242, 102, 143);
     margin-left: auto;
     margin-right: auto;
     padding: 1%;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.295);
+    
 }
 
 .principal {
@@ -76,16 +81,59 @@ margin-bottom: 3%;
 }
 
 #buscar {
-background-color: coral;
+background-color: #87CEFA;
 width: 70%;
+height: 70%;
 }
 #b-aleatoria {
     width: 25%;
-    background-color: yellow;
+    background-color: #7CDBD5;
+    height: 70%;
+    box-shadow: 5px 5px 10px rgb(0 0 0 / 30%);
+    border-radius: 7px;
+    font-size: 1.2em;
+    padding: 2%;
+    margin-bottom: 3%;
+    line-height: 1.5em;
 }
 
 #b-aleatoria img {
     border-radius: 7px;
+    margin-top: 5%;
+    cursor: pointer;
+    backface-visibility: hidden;
+}
+#b-aleatoria :hover img{
+    opacity: 0.3;
+}
+#b-aleatoria:hover .middle {
+    opacity: 1;
+}
+
+.text {
+    background-color: #f7d24e;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+    font-weight: 550;
+    border-radius: 5px;
+}
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 98%;
+    left: 77%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+#bs-aleatoria{
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    padding: 3px;
 }
 
 #form-busca {
@@ -100,23 +148,26 @@ width: 70%;
 }
 
 .form-group label {
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 520;
+    display: flex;
 }
 
 #name{
-    width: 89%;
+    width: 100%;
 }
 
 #ingredient{
-    width: 82%;
+    width: 100%;
 }
 #comments{
-    width: 80%;
+    width: 100%;
 }
 
 .f-input{
     padding-left: 1%;
     line-height: 1.5em; 
+    width: 32%;
 }
 
 #typeCode{
@@ -133,30 +184,31 @@ width: 70%;
     justify-content: space-between;
     margin: 0.7%;
     padding: 3px;
-    }
+}
 
-.checkbox {
-        display: inline-flex;
+.form-group{
+        display: flex;
         justify-content: space-between;
-        margin: 0.7%;
+}
+.form-group-ck{
+    display: inline-flex;
+    justify-content: space-between;
+    margin: 0.7%;
 }
 
-#b-aleatoria{
-    box-shadow: 5px 5px 10px rgb(0 0 0 / 30%);
-    border-radius: 7px;
-    font-size: 1.2em;
-    padding: 2%;
-    margin-bottom: 3%;
-    line-height: 1.5em;
+.checkbox, .radio {
+    position: relative;
+    margin-right: 15px;
+    margin-left: 15px;
 }
 
-#b-aleatoria img{
-    border-radius: 7px;
+.form-group-ck input{
+    margin-top: 15px;
 }
 
 
 #resultado {
-    background-color:greenyellow;
+    background-color:#5cd1ec;
     width: 92%;
     margin-left: auto;
     margin-right: auto;
@@ -180,6 +232,7 @@ table {
     border: 1px solid #dee2e6;
     text-align: left;
     padding: 8px;
+    font-weight: 450;
   }
 
   tr:nth-child(even) {
@@ -193,14 +246,14 @@ table {
     text-align: -internal-center;
 }
 tbody tr:hover{
-    color:blue;
+    color:rgb(252,56,156);
 }
 
   #enviar {
 	width: 25%;
 	padding: 15px 0;
 	font-size: 18px;
-	background-color: orange;
+	background-color: #f7d24e;
 	color: white;
 	font-weight: bold;
 	border: none;
@@ -215,24 +268,10 @@ tbody tr:hover{
 #enviar:hover {
 	background-color: darkorange;
 }
-#busca-aleatoria {
-	width: 100%;
-	padding: 15px 0;
-	font-size: 18px;
-	background-color: forestgreen;
-	color: white;
-	font-weight: bold;
-	border: none;
-	border-radius: 5px;
-    cursor: pointer;
-    margin-top: 2%;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.295);
+a{
+    text-decoration: none;
+}
+.sugestao :hover{
+    color:rgb(252,56,156);
 }
 
-#bs-aleatoria{
-    width: 100%;
-    border-radius: 5px;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    padding: 3px;
-}
